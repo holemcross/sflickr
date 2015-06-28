@@ -1,0 +1,9 @@
+<div>
+	<h1>PHOTO GRID</h1>
+	<div class="photo-grid">
+		<img ng-repeat="p in photo_formated_list" ng-src="{{p.thumbnail}}">{{p.title}}</img>
+	</div>
+	<span>
+		<p>Page <a href="">{{page_num}}</a> of <a href="">{{num_pages}}</p>
+	</span>
+</div>
