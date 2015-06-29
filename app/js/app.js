@@ -22,10 +22,6 @@ $routeProvider.
     templateUrl: 'partials/photo_grid.html',
     controller: 'PhotoGridSearchController'
   }).
-  when('/carousel/:query_text/:page_num', {
-    templateUrl: 'partials/photo_carousel.html',
-    controller: 'PhotoCarouselSearchController'
-  }).
   otherwise({
     redirectTo: '/grid/cats/1'
   });

@@ -1,14 +1,33 @@
 <!--<div ng-controller="PhotoGridSearchController as PGSCtrl">-->
-<div ng-show="images_exist">
+<div ng-hide="carousel_active">
 	<h1>PHOTO GRID</h1>
 	<div class="photo-grid">
-		<img ng-repeat="p in photo_formated_list" ng-src="{{p.thumbnail}}">{{p.title}}</img>
+		<img ng-repeat="p in photo_formated_list" ng-src="{{p.url_sq}}" ng-click="show_carousel(p)">{{p.title}}</img>
 	</div>
 	<span>
 		<!--<p>Page <a href="">{{page_num}}</a> of <a href="">{{num_pages}}</p>-->
 		<p><a href="{{prev_page}}">PREV</a> {{page_num}} of {{num_pages}} <a href="{{next_page}}">NEXT</a></p>
 	</span>
 </div>
+<!-- No Images -->
 <div ng-hide="images_exist">
 	<h2>No images were found.</h2>
+</div>
+<!-- Carousel  -->
+<div ng-show="carousel_active" class="carousel">
+	<table>
+		<tr>
+			<td><button ng-click="carousel_cycle_prev()">Prev</button></td>
+			<td>
+				<img ng-src="{{carousel_photo.url_s}}" ng-click="hide_carousel()"></img>
+				<div>
+					<p>User: {{carousel_photo.username}}</p>
+					<p>Title: {{carousel_photo.title}}</p>
+					<p>Description: {{carousel_photo.description}}</p>
+					<p>Date Taken: {{carousel_photo.date_taken}}</p>
+					</div>
+				</td>
+			<td><button ng-click="carousel_cycle_next()">Next</button></td>
+		</tr>
+	</table>
 </div>

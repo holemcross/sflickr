@@ -35,6 +35,7 @@ sflickrServices.factory('PhotosBySearch', ['$resource',
 						 'safe_search' : 0,
 						 'privacy_filter' : 1,
 						 'content_type' : 1, // Photos only
+						 'extras' : "description, license, date_upload, date_taken, owner_name, last_update, geo, url_sq, url_s, url_q, url_m, url_l, url_o",
 						 'per_page' : 24,
 						 'page' : '@page_num',
 						 'format' : 'json',

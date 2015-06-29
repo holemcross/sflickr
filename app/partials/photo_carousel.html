@@ -1,8 +1,19 @@
 <div class="carousel">
-	<div>LeftArrow
-	</div>
-	<div>Content
-	</div>
-	<div>RightArrow
-	</div>
+	<table>
+		<tr>
+			<td><p>Left Arrow</p></td>
+			<td>
+				<img href="{{carousel_photo.url_s}}"></img>
+				<div>
+					<p>User: {{carousel_photo.username}}</p>
+					<p>Title: {{carousel_photo.title}}</p>
+					<p>Description: {{carousel_photo.description}}</p>
+					<p>Date Taken: {{carousel_photo.date_taken}}</p>
+					<p>Date Uploaded: {{carousel_photo.date_uploaded}}</p>
+					<p>Date Last Updated: {{carousel_photo.date_last_update}}
+					</div>
+				</td>
+			<td><p>Right Arrow</p></td>
+		</tr>
+	</table>
 </div>
