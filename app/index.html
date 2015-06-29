@@ -23,7 +23,9 @@
       <div class="page-content">
 
         <!-- Header Bar -->
-        <div ng-include src="'partials/header.html'"></div>
+        <div ng-controller="HeaderController as headerCtrl">
+          <div ng-include src="'partials/header.html'"></div>
+          </div>
         <!-- End Header Bar -->
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>

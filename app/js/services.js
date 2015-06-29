@@ -43,3 +43,16 @@ sflickrServices.factory('PhotosBySearch', ['$resource',
 		var actions = { 'query': { 'method' : 'GET', 'params': params, 'isArray': false}};
 		return $resource(rest_uri, {}, actions,{'stripTrailingSlashes' : false});
 	}]);
+
+sflickrServices.factory('PhotoInfo', ['$resource',
+	function($resource){
+		var params = { 	 'method' : 'flickr.photos.getInfo',
+						 'api_key': api_key,
+						 'photo_id' : '@pid', 
+						 'secret' : '@photo_secret',
+						 'format' : 'json',
+						 'nojsoncallback' : 1
+						};
+		var actions = { 'query': { 'method' : 'GET', 'params': params, 'isArray': false}};
+		return $resource(rest_uri, {}, actions,{'stripTrailingSlashes' : false});
+	}]);

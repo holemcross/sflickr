@@ -1,8 +1,9 @@
 <!-- Header.html -->
+<!--<div ng-controller="HeaderController as headerCtrl" class="content-row">-->	
 <div class="content-row">	
 	<h3>Search Flickr!</h3>
 	<div>
-	<button ng-click="null">Search!</button>
-	<input ng-model="queryFilter" placeholder="Birds, Cards, Places..."></input>
+	<input ng-model="headerCtrl.queryText" placeholder="Birds, Cards, Places..."></input>
+	<button ng-click="searchByText(headerCtrl.queryText)">Search!</button>
 	</div>
 </div>

@@ -18,14 +18,18 @@ $routeProvider.
   //  templateUrl: 'partials/photo_grid.html',
   //  controller: 'GridController'
   //}).
-  when('/photos/:query_text/:page_num', {
+  when('/grid/:query_text/:page_num', {
     templateUrl: 'partials/photo_grid.html',
     controller: 'PhotoGridSearchController'
   }).
+  when('/carousel/:query_text/:page_num', {
+    templateUrl: 'partials/photo_carousel.html',
+    controller: 'PhotoCarouselSearchController'
+  }).
   otherwise({
-    redirectTo: '/photos/1'
+    redirectTo: '/grid/cats/1'
   });
-  $routeProvider.otherwise({redirectTo: '/photos'});
+  $routeProvider.otherwise({redirectTo: '/grid'});
 }]);
 
 sflickrApp
