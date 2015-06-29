@@ -10,14 +10,6 @@ config(['$routeProvider', function($routeProvider) {
 
 // Routing
 $routeProvider.
-  //when('/photos', {
-  //  templateUrl: 'partials/photo_grid.html',
-  //  controller: 'GridController'
-  //}).
-  //  when('/photos/:page_num', {
-  //  templateUrl: 'partials/photo_grid.html',
-  //  controller: 'GridController'
-  //}).
   when('/grid/:query_text/:page_num', {
     templateUrl: 'partials/photo_grid.html',
     controller: 'PhotoGridSearchController'

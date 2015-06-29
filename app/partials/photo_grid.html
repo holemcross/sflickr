@@ -1,33 +1,45 @@
 <!--<div ng-controller="PhotoGridSearchController as PGSCtrl">-->
-<div ng-hide="carousel_active">
-	<h1>PHOTO GRID</h1>
-	<div class="photo-grid">
-		<img ng-repeat="p in photo_formated_list" ng-src="{{p.url_sq}}" ng-click="show_carousel(p)">{{p.title}}</img>
-	</div>
-	<span>
-		<!--<p>Page <a href="">{{page_num}}</a> of <a href="">{{num_pages}}</p>-->
-		<p><a href="{{prev_page}}">PREV</a> {{page_num}} of {{num_pages}} <a href="{{next_page}}">NEXT</a></p>
-	</span>
-</div>
-<!-- No Images -->
-<div ng-hide="images_exist">
-	<h2>No images were found.</h2>
-</div>
-<!-- Carousel  -->
-<div ng-show="carousel_active" class="carousel">
-	<table>
-		<tr>
-			<td><button ng-click="carousel_cycle_prev()">Prev</button></td>
-			<td>
-				<img ng-src="{{carousel_photo.url_s}}" ng-click="hide_carousel()"></img>
-				<div>
-					<p>User: {{carousel_photo.username}}</p>
-					<p>Title: {{carousel_photo.title}}</p>
-					<p>Description: {{carousel_photo.description}}</p>
-					<p>Date Taken: {{carousel_photo.date_taken}}</p>
-					</div>
-				</td>
-			<td><button ng-click="carousel_cycle_next()">Next</button></td>
-		</tr>
-	</table>
+<div class="container-fluid">
+		<div ng-hide="carousel_active">
+			<h1>PHOTO GRID</h1>
+			<div class="">
+				<img ng-repeat="p in photo_formated_list" ng-src="{{p.url_sq}}" ng-click="show_carousel(p)">{{p.title}}</img>
+			</div>
+			<span>
+				<p><a href="{{prev_page}}">PREV</a> {{page_num}} of {{num_pages}} <a href="{{next_page}}">NEXT</a></p>
+			</span>
+		</div>
+	<!-- No Images -->
+		<div ng-hide="images_exist">
+			<h2>No images were found.</h2>
+		</div>
+	<!-- Carousel  -->
+		<div ng-show="carousel_active" class="container-fluid">
+			<div class="row">
+				<div class="col-sm-3">
+					<span class="glyphicon glyphicon-chevron-left" ng-click="carousel_cycle_prev()"></span>
+				</div>
+				<div class="col-sm-9">
+					<img ng-src="{{carousel_photo.url}}" ng-click="hide_carousel()"></img>
+				</div>
+				<div class="col-sm-3">
+					<span class="glyphicon glyphicon-chevron-right" ng-click="carousel_cycle_next()"></span>
+				</div>
+			</div>
+			<div class="row">
+				<select class="form-control" ng-model="image_size" ng-options="choice.name for choice in sizeChoices" ng-change="update_size_pref(image_size)">
+					<option value="">-- choose image size --</option>
+				</select>
+				<dl class="dl-horizontal">
+					<dt>User:</dt> 
+						<dd>{{carousel_photo.username}}</dd>
+					<dt>Title:</dt> 
+						<dd>{{carousel_photo.title}}</dd>
+					<dt>Description:<dt> 
+						<dd>{{carousel_photo.description}}</dd>
+					<dt>Date Taken:</dt> 
+						<dd>{{carousel_photo.date_taken}}</dd>
+				</dl>
+			</div>
+		</div>
 </div>

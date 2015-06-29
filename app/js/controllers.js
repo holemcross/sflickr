@@ -13,7 +13,8 @@ sflickrControllers.controller('HeaderController', ['$scope','$routeParams','$loc
         if(str != null || str != ''){
           $location.path('/grid/'+str+'/1');
         }
-      }
+      };
+      
     }]);
 
 /* Grid Controllers */
@@ -49,10 +50,19 @@ sflickrControllers.controller('PhotoGridUsersController', ['$scope','$routeParam
 sflickrControllers.controller('PhotoGridSearchController', ['$scope','$routeParams', 'PhotosBySearch', 'PhotoInfo',
   function($scope, $routeParams, PhotosBySearch, PhotoInfo) {
 
+    // CONST
+    $scope.sizeChoices = [  {'name' : 'square', 'value' : 'url_sq'},
+                              {'name' : 'small', 'value' : 'url_s'},
+                              {'name' : 'medium', 'value' : 'url_m'},
+                              {'name' : 'large', 'value' : 'url_l'},
+                              {'name' : 'original', 'value' : 'url_o'}
+                            ];
+
     // Carousel Functions
     $scope.show_carousel = function(photoObj){
       $scope.carousel_active = true;
       $scope.carousel_photo = photoObj;
+      $scope.update_size_pref($scope.image_size);
 
     };
     $scope.hide_carousel = function(){
@@ -77,25 +87,50 @@ sflickrControllers.controller('PhotoGridSearchController', ['$scope','$routePara
     };
 
     $scope.carousel_cycle_prev = function(){
-      console.log("carousel_cycle_prev!");
       console.log($scope.carousel_photo.index);
       if($scope.carousel_photo.index <= 0){
-        console.log("Overbounds!");
         // Check if new page exists
-        console.log($scope.page_num);
         if($scope.page_num > 1){
-          console.log("Free Pages Left!");
           // Load New Page
-          $scope.photo_formated_list = [];
           $scope.query_search( $routeParams.query_text,$scope.page_num-1);
           $scope.show_carousel($scope.photo_formated_list[$scope.photo_formated_list.length-1]);
         }
       }else{
         // Cycle Photo
-        console.log("ELSE!");
         $scope.show_carousel($scope.photo_formated_list[$scope.carousel_photo.index-1]);
       }
     };
+
+    $scope.update_size_pref = function(image_size){
+      console.log(image_size);
+      var url = $scope.carousel_photo.url_sq;
+      if(image_size != null && image_size != undefined){
+        
+        switch(image_size.value){
+          case 'url_sq':
+            url = $scope.carousel_photo.url_sq;
+            break;
+          case 'url_s':
+            url = $scope.carousel_photo.url_s;
+            break;
+          case 'url_m':
+            url = $scope.carousel_photo.url_m;
+            break;
+          case 'url_l':
+            url = $scope.carousel_photo.url_l;
+            break;
+          case 'url_o':
+            url = $scope.carousel_photo.url_o;
+            break;
+        }
+        $scope.carousel_photo.url = url;
+        console.log(url);
+        console.log($scope.carousel_photo.url );
+      }
+      
+
+      
+    }
 
     $scope.query_search = function( qtext, pageNum){
       $scope.images_exist = false;
@@ -132,6 +167,7 @@ sflickrControllers.controller('PhotoGridSearchController', ['$scope','$routePara
                                         'url_m' : element.url_m,
                                         'url_l' : element.url_l,
                                         'url_o' : element.url_o,
+                                        'url' : element.url_sq,
                                         'index' : index
                                     };
 

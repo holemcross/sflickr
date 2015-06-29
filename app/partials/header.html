@@ -1,9 +1,14 @@
 <!-- Header.html -->
-<!--<div ng-controller="HeaderController as headerCtrl" class="content-row">-->	
-<div class="content-row">	
-	<h3>Search Flickr!</h3>
-	<div>
-	<input ng-model="headerCtrl.queryText" placeholder="Birds, Cards, Places..."></input>
-	<button ng-click="searchByText(headerCtrl.queryText)">Search!</button>
+<!--<div ng-controller="HeaderController as headerCtrl" class="content-row">-->
+
+<div class="container-fluid">
+	<div class="row"><span></span></div>
+	<div class="row">
+		<div class="col-md-4"><h3>Search Flickr!</h3></div>
+		<div class="col-md-8 pull-right">
+			<form ng-submit="searchByText(headerCtrl.queryText)">
+				
+				<span class="glyphicon glyphicon-search pull-left" aria-hidden="true" ng-click="searchByText(headerCtrl.queryText)"><input type="text" ng-model="headerCtrl.queryText" placeholder="Birds, Cards, Places..."/></span>
+		</div>
 	</div>
 </div>
