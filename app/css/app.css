@@ -4,9 +4,22 @@
   margin-top: 10px;
 }
 
+.vcenter{
+  display:inline-block;
+  vertical-align: middle;
+  float:none;
+}
 .carousel {
+  vertical-align: middle;
   position: relative;
-  top: 50%;
+}
+
+.image-row {
+  vertical-align: middle;
+}
+
+.icon-button{
+  height:100%;
 }
 
 .menu {

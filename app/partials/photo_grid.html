@@ -14,32 +14,35 @@
 			<h2>No images were found.</h2>
 		</div>
 	<!-- Carousel  -->
-		<div ng-show="carousel_active" class="container-fluid">
+		<div ng-show="carousel_active" class="container-fluid carousel">
 			<div class="row">
-				<div class="col-sm-3">
-					<span class="glyphicon glyphicon-chevron-left" ng-click="carousel_cycle_prev()"></span>
-				</div>
-				<div class="col-sm-9">
+				<div class="col-xs-5 col-md-3 col-lg-1 vcenter">
 					<img ng-src="{{carousel_photo.url}}" ng-click="hide_carousel()"></img>
-				</div>
-				<div class="col-sm-3">
-					<span class="glyphicon glyphicon-chevron-right" ng-click="carousel_cycle_next()"></span>
 				</div>
 			</div>
 			<div class="row">
-				<select class="form-control" ng-model="image_size" ng-options="choice.name for choice in sizeChoices" ng-change="update_size_pref(image_size)">
-					<option value="">-- choose image size --</option>
-				</select>
-				<dl class="dl-horizontal">
-					<dt>User:</dt> 
-						<dd>{{carousel_photo.username}}</dd>
-					<dt>Title:</dt> 
-						<dd>{{carousel_photo.title}}</dd>
-					<dt>Description:<dt> 
-						<dd>{{carousel_photo.description}}</dd>
-					<dt>Date Taken:</dt> 
-						<dd>{{carousel_photo.date_taken}}</dd>
-				</dl>
+				<div class="col-xs-5 col-md-3 col-lg-1 vcenter icon-button">
+					<span class="glyphicon glyphicon-chevron-left" ng-click="carousel_cycle_prev()"></span>
+				</div>
+				<div class="col-xs-5 col-md-3 col-lg-1 vcenter icon-button">
+					<span class="glyphicon glyphicon-chevron-right" ng-click="carousel_cycle_next()"></span>
+				</div>
+			<div class="row">
+				<div>
+					<select class="form-control" ng-model="image_size" ng-options="choice.name for choice in sizeChoices" ng-change="update_size_pref(image_size)">
+						<option value="">-- choose image size --</option>
+					</select>
+					<dl class="dl-horizontal">
+						<dt>User:</dt> 
+							<dd>{{carousel_photo.username}}</dd>
+						<dt>Title:</dt> 
+							<dd>{{carousel_photo.title}}</dd>
+						<dt>Description:<dt> 
+							<dd>{{carousel_photo.description}}</dd>
+						<dt>Date Taken:</dt> 
+							<dd>{{carousel_photo.date_taken}}</dd>
+					</dl>
+				</div>
 			</div>
 		</div>
 </div>
